@@ -1,22 +1,42 @@
 import pygame , sys
-import tubes
+from tubes import tubes
+
+class Game:
+    def __init__(self):
+         
     
-    
+        self.tubes = pygame.sprite.Group()
+        self.tube_setup()
+    def run(self):
+         self.tubes.update(1)
+         self.tubes.draw(screen)
+         
+         
+    def tube_setup(self):
+         tubes(100,100)
+         tube_sprite = tubes(100,100)
+         self.tubes.add(tube_sprite)
 pygame.init()
 screen_width = 800
 screen_height = 400
+BACKGROUND_IMAGE = pygame.transform.scale(pygame.image.load('assets/background.jpg'),(screen_width,screen_height))
+
+
+# BACKGROUND_IMAGE = pygame.image.load('background.png')
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
-tube = tubes()
-def run(sprite,position):
-     sprite.draw(screen)
-     
+
+game = Game()
+
 while True:
     for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.QUIT()
                 sys.exit()
-    screen.fill((0,0,40))
+    
     pygame.display.flip()
+    # screen.fill((0,0,40))
+    screen.blit(BACKGROUND_IMAGE,(0,0))
+    game.run()
     clock.tick(60)
-    run(tube,tube.x)
+    
