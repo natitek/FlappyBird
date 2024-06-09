@@ -1,10 +1,15 @@
 import pygame
 
 class tubes(pygame.sprite.Sprite):
-    def __init__(self,x,y):
+    def __init__(self,x,y,direction):
         super().__init__()
-        self.image = pygame.image.load("assets/pipe.png").convert_alpha()
-        self.rect = self.image.get_rect(topleft = (x,y))
-    def update(self,direction):
+        if direction == 1:
+            self.image = pygame.image.load("assets/pipe.png").convert_alpha()
+            self.rect = self.image.get_rect(bottomleft = (x,y))
+        else:
+            self.image = pygame.image.load("assets/pipe_2.png").convert_alpha()
+            self.rect = self.image.get_rect(bottomleft = (x,y))
+    def update(self,speed):
+        self.rect.x += speed
         
-        self.rect.x += direction
+        

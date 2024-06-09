@@ -11,3 +11,4 @@ class bird(pygame.sprite.Sprite):
             self.rect.y-=self.speed
         else:
             self.rect.y+=self.speed
+    

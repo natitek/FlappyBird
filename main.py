@@ -8,14 +8,16 @@ class Game:
         self.tubes = pygame.sprite.Group()
         self.tube_setup()
     def run(self):
-         self.tubes.update(1)
+         self.tubes.update(-2) #pass speed 
          self.tubes.draw(screen)
          
          
     def tube_setup(self):
-         tubes(100,100)
-         tube_sprite = tubes(100,100)
-         self.tubes.add(tube_sprite)
+        #  tubes(screen_height,screen_width)
+         tube_sprite = tubes(screen_width,100,1)
+         tube_sprite2 = tubes(screen_width,800,-1)
+        #  tube_sprite = tubes(500,300,-1)
+         self.tubes.add(tube_sprite,tube_sprite2)
 pygame.init()
 screen_width = 800
 screen_height = 400
