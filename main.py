@@ -29,7 +29,7 @@ class Game:
     def tube_setup(self):
         #  tubes(screen_height,screen_width)
         tube_sprite = tubes(screen_width-10,self.random,1)
-        tube_sprite2 = tubes(screen_width-10,self.random+600,-1)
+        tube_sprite2 = tubes(screen_width-10,self.random+700,-1)
         # self.tubes.add(tube_sprite,tube_sprite2)
         self.ready = False
         self.tube_time = pygame.time.get_ticks()
@@ -46,15 +46,15 @@ class Game:
             # self.tubes.add(tubes(screen_width,100,1),tubes(screen_width,700,-1))
             self.tubes.add(self.tube_setup())
     def bird_setup(self):
-        thebird = bird()
-        return thebird
+        self.thebird = bird()
+        return self.thebird
     def make_bird(self):
         self.bird.add(self.bird_setup())
     def check_collision(self):
-        for tubes in self.tubes:
-                    if pygame.sprite.spritecollide(tubes,self.bird,False):
-                         print("game over")
-                         pygame.quit()
+        # for tubes in self.tubes:
+            if pygame.sprite.spritecollide(self.thebird,self.tubes,False):
+                print("game over")
+                 
         
 
              
