@@ -9,7 +9,12 @@ class tubes(pygame.sprite.Sprite):
         else:
             self.image = pygame.image.load("assets/pipe_2.png").convert_alpha()
             self.rect = self.image.get_rect(bottomleft = (x,y))
+
+    def destroy(self):
+         if self.rect.x < -100:
+            self.kill()
     def update(self,speed):
-        self.rect.x += speed
+         self.rect.x += speed
+         self.destroy()
         
         
